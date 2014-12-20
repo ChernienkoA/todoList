@@ -1,0 +1,36 @@
+#container{
+	width: 400px;
+	background: -webkit-linear-gradient(bottom left, #69c8e7 0%, #49d3b4 100%);
+	background: -o-linear-gradient(bottom left, #69c8e7 0%, #49d3b4 100%);
+	background: linear-gradient(to top right, #69c8e7 0%, #49d3b4 100%);
+	padding: 20px;
+}
+input[type=text]{
+	width: 65%;
+}
+h1{
+	text-align: center;
+}
+ol.list{
+	margin: 0;
+	padding: 25px;
+}
+ol.list li{
+	height: 30px;
+	overflow: hidden;
+	line-height: 30px;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #919191;
+}
+ol.list li button{
+	padding: 5px 7px;
+	background-color: red;
+	color: #fff;
+	border: none;
+}
+ol.list li input[type='checkbox']{
+	vertical-align: middle;
+	margin: 0 10px;
+	display: inline-block;
+}
