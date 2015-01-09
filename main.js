@@ -3,6 +3,9 @@
     var checkAll = document.querySelector('#checkAll');
     var btn = document.querySelector('#btn');
     var delChecked = document.querySelector('#delChecked');
+    var viewChecked = document.querySelector('#viewChecked');
+    var viewUnChecked = document.querySelector('#viewUnChecked');
+    var viewAll = document.querySelector('#viewAll');
     var list = {
         addList: document.querySelector('.list')
     };
@@ -20,6 +23,39 @@
         newLi.appendChild(newInput);
         newLi.appendChild(newSpan);
         return newLi;
+    };
+    var viewCheckedBox = function (event) {
+        var arr = [];
+        arr = document.querySelectorAll('.list input');
+        for (var i = 0; i <= arr.length - 1; i++) {
+            if (arr[i].checked === true) {
+                arr[i].parentElement.style.display = "block";
+            } else {
+                arr[i].parentElement.style.display = "none";
+            }
+        }
+    };
+    var viewUnCheckedBox = function (event) {
+        var arr = [];
+        arr = document.querySelectorAll('.list input');
+        for (var i = 0; i <= arr.length - 1; i++) {
+            if (arr[i].checked === false) {
+                arr[i].parentElement.style.display = "block";
+            } else {
+                arr[i].parentElement.style.display = "none";
+            }
+        }
+    };
+    var viewAllList = function (event) {
+        var arr = [];
+        arr = document.querySelectorAll('.list input');
+        for (var i = 0; i <= arr.length - 1; i++) {
+            if (arr[i].checked === false) {
+                arr[i].parentElement.style.display = "block";
+            } else {
+                arr[i].parentElement.style.display = "block";
+            }
+        }
     };
     var addedText = function (task) {
         list.addList.appendChild(task);
@@ -63,6 +99,9 @@
         }
         ;
     };
+    viewAll.addEventListener('click', viewAllList);
+    viewUnChecked.addEventListener('click', viewUnCheckedBox);
+    viewChecked.addEventListener('click', viewCheckedBox);
     delChecked.addEventListener('click', delCheckBox);
     checkAll.addEventListener('click', checkAllBox);
     btn.addEventListener('click', onInput);
