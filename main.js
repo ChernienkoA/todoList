@@ -12,6 +12,7 @@ var makeHtmlTags = function (str, onCheck) {
     newLinkBottom.className = " linkBottom";
     newLinkBottom.addEventListener('click', toBottom);
     newSpan.textContent = str;
+    newSpan.addEventListener('dblclick', dblclickHandler);
     newInput.addEventListener('click', onCheck);
     newInput.type = 'checkbox';
     delEll.textContent = 'X';
@@ -107,7 +108,7 @@ var onInput = function () {
 var onChecked = function (event) {
     var task = event.target.parentElement;
     task.remove('li');
-}
+};
 var delCheckBox = function (event) {
     var arr = [];
     arr = document.querySelectorAll('.list input');
@@ -129,6 +130,32 @@ var checkAllBox = function (event) {
             checkAll.checked = false;
         }
     }
+};
+var createInput = function(str){
+    var el = document.createElement("input");
+    el.type ="text";
+    el.className = "changeText";
+    el.value = str;
+    return el;
+
+};
+var switchToSpan = function(e){
+    var currentEl = e.target;
+    var parentEl = currentEl.parentNode;
+    var elementText = currentEl.value;
+    var el = document.createElement("span");
+    el.textContent =elementText;
+    parentEl.replaceChild(el, currentEl);
+    el.addEventListener('dblclick', dblclickHandler);
+};
+var dblclickHandler = function (e){
+    var currentEl = e.target;
+    var parentEl = currentEl.parentNode;
+    var elementText = currentEl.textContent;
+    var newEl = createInput(elementText);
+    parentEl.replaceChild(newEl, currentEl);   
+    newEl.addEventListener('blur', switchToSpan);
+     newEl.focus();
 };
 window.addEventListener('load', function () {
     var input = document.querySelector('#inputEll');
